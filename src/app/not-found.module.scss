@@ -1,0 +1,41 @@
+@use "@/styles/variables" as vars;
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+
+  h1 {
+    font-size: 96px;
+    font-weight: 800;
+    color: vars.$primary-dark;
+  }
+
+  p {
+    font-size: 24px;
+    color: vars.$text-muted;
+  }
+}
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: vars.$primary-dark;
+  }
+
+  p {
+    font-size: 18px;
+    color: vars.$text-muted;
+  }
+}

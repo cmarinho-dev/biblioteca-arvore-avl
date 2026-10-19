@@ -1,0 +1,145 @@
+@use "../../styles/variables" as *;
+
+.livrosPage {
+  display: grid;
+  gap: 36px;
+}
+
+.pageHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  align-items: end;
+  gap: 28px;
+  padding: 38px 0 34px;
+  border-bottom: 1px solid $border-color;
+
+  > div:first-child {
+    display: grid;
+    gap: 14px;
+  }
+
+  p:not(.kicker) {
+    color: $text-muted;
+    font-size: 18px;
+  }
+}
+
+.kicker {
+  width: fit-content;
+  padding: 7px 12px;
+  color: $primary-dark;
+  font-size: 14px;
+  font-weight: 750;
+  background: $primary-soft;
+  border: 1px solid rgba(35, 97, 74, 0.16);
+  border-radius: 999px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  span {
+    display: grid;
+    min-height: 92px;
+    align-content: center;
+    justify-items: center;
+    padding: 14px 10px;
+    color: $text-muted;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    background: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $shadow-sm;
+  }
+
+  strong {
+    color: $secondary-color;
+    font-size: 28px;
+    line-height: 1;
+  }
+}
+
+.collection {
+  display: grid;
+  gap: 20px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  div {
+    display: grid;
+    gap: 4px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 15px;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    color: $surface-color;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    background: $primary-color;
+    border-radius: 999px;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .pageHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 720px) {
+  .bookGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+
+    a {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}

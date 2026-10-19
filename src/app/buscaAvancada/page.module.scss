@@ -1,0 +1,203 @@
+@use "../../styles/variables" as *;
+
+.searchPage {
+  display: grid;
+  gap: 30px;
+}
+
+.pageHeader {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+  padding: 38px 0 10px;
+
+  p:not(.kicker) {
+    color: $text-muted;
+    font-size: 18px;
+  }
+}
+
+.avlLink {
+  a {
+    color: $primary-dark;
+    font-weight: 750;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.kicker {
+  width: fit-content;
+  padding: 7px 12px;
+  color: $primary-dark;
+  font-size: 14px;
+  font-weight: 750;
+  background: $primary-soft;
+  border: 1px solid rgba(35, 97, 74, 0.16);
+  border-radius: 999px;
+}
+
+.searchPanel {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+  background: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.3fr) repeat(2, minmax(180px, 1fr));
+  gap: 16px;
+
+  label {
+    display: grid;
+    gap: 8px;
+    color: $secondary-color;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 13px;
+    color: $text-color;
+    background: #fbfcf9;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
+    &:hover {
+      border-color: $border-strong;
+    }
+  }
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  button,
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 999px;
+  }
+
+  button {
+    color: $surface-color;
+    background: $primary-color;
+    border: 0;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
+
+  a {
+    color: $primary-dark;
+    background: $primary-soft;
+  }
+}
+
+.results {
+  display: grid;
+  gap: 20px;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  h2 {
+    font-size: 28px;
+  }
+
+  span {
+    color: $text-muted;
+    font-size: 14px;
+    font-weight: 750;
+  }
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.emptyState {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  padding: 28px;
+  background: rgba(255, 253, 249, 0.72);
+  border: 1px dashed $border-strong;
+  border-radius: $border-radius-lg;
+
+  h3 {
+    color: $secondary-color;
+  }
+
+  p {
+    color: $text-muted;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    color: $surface-color;
+    font-size: 14px;
+    font-weight: 800;
+    background: $primary-color;
+    border-radius: 999px;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .fields,
+  .bookGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .searchPanel,
+  .emptyState {
+    padding: 18px;
+  }
+
+  .formActions {
+    align-items: stretch;
+    flex-direction: column;
+
+    button,
+    a {
+      width: 100%;
+    }
+  }
+
+  .resultsHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}

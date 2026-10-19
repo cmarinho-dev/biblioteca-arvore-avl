@@ -1,69 +1,85 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { livroRepository } from "@/services/repository/livroRepository";
+import styles from "./page.module.scss";
 
 export default function Home() {
+  const livros = livroRepository.findAll();
+  const categorias = new Set(livros.map((livro) => livro.categoria));
+  const disponiveis = livros.filter((livro) =>
+    livro.disponibilidade.toLowerCase().includes("dispon"),
+  );
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
+    <main className={styles.home}>
+      <section className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <p className={styles.kicker}>Biblioteca digital</p>
+          <h1>Encontre o próximo livro com menos atrito.</h1>
+
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            Consulte obras, autores, categorias e disponibilidade em uma
+            interface mais limpa para explorar o acervo.
           </p>
+
+          <div className={styles.actions}>
+            <Link className={styles.primaryAction} href="/livros">
+              Ver livros
+            </Link>
+            <Link className={styles.secondaryAction} href="/buscaAvancada">
+              Busca avançada
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.bookStack}>
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className={styles.stats} aria-label="Resumo do acervo">
+        <article>
+          <strong>{livros.length}</strong>
+          <span>livros cadastrados</span>
+        </article>
+
+        <article>
+          <strong>{categorias.size}</strong>
+          <span>categorias no acervo</span>
+        </article>
+
+        <article>
+          <strong>{disponiveis.length}</strong>
+          <span>disponíveis para consulta</span>
+        </article>
+      </section>
+
+      <section className={styles.cards} aria-label="Atalhos da aplicação">
+        <Link className={styles.card} href="/livros">
+          <span>01</span>
+          <h2>Livros</h2>
+          <p>Consulte os títulos disponíveis no acervo.</p>
+        </Link>
+
+        <Link className={styles.card} href="/buscaAvancada">
+          <span>02</span>
+          <h2>Busca Avançada</h2>
+          <p>Encontre livros por termo, categoria e disponibilidade.</p>
+        </Link>
+
+        <article className={styles.card}>
+          <span>03</span>
+          <h2>Acervo</h2>
+          <p>Visualize informações essenciais de cada obra.</p>
+        </article>
+      </section>
+    </main>
   );
 }

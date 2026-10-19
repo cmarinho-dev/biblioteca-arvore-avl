@@ -1,0 +1,222 @@
+@use "../../styles/variables" as *;
+
+.document {
+  display: grid;
+  gap: 34px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 0 56px;
+  color: $text-color;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  a,
+  button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 16px;
+    color: $primary-dark;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 750;
+    background: $primary-soft;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  button {
+    color: white;
+    background: $primary-color;
+  }
+}
+
+.header {
+  display: grid;
+  gap: 14px;
+  padding: 32px;
+  background: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+
+  h1 {
+    max-width: 740px;
+    font-size: clamp(34px, 6vw, 54px);
+    line-height: 1.08;
+  }
+
+  > p:last-child {
+    max-width: 720px;
+    color: $text-muted;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+.kicker {
+  color: $primary-dark;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section {
+  display: grid;
+  gap: 16px;
+
+  h2 {
+    font-size: 27px;
+  }
+
+  p,
+  li {
+    color: $text-muted;
+    line-height: 1.7;
+  }
+
+  code {
+    padding: 2px 5px;
+    color: $primary-dark;
+    background: $primary-soft;
+    border-radius: 4px;
+  }
+}
+
+.formula {
+  display: grid;
+  gap: 6px;
+  padding: 20px 22px;
+  background: $primary-soft;
+  border-left: 4px solid $primary-color;
+  border-radius: $border-radius;
+
+  span {
+    font-weight: 750;
+  }
+
+  small {
+    color: $text-muted;
+  }
+}
+
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.caseCard {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 20px;
+  background: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+
+  p {
+    margin: 0;
+  }
+
+  small {
+    color: $text-muted;
+    line-height: 1.6;
+  }
+}
+
+.caseTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  > span {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    color: white;
+    font-weight: 850;
+    background: $primary-color;
+    border-radius: 50%;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+.steps,
+.files {
+  display: grid;
+  gap: 8px;
+  padding-left: 24px;
+}
+
+.footer {
+  padding-top: 18px;
+  color: $text-muted;
+  font-size: 13px;
+  border-top: 1px solid $border-color;
+}
+
+@media (max-width: 700px) {
+  .document {
+    gap: 26px;
+    padding-top: 20px;
+  }
+
+  .header {
+    padding: 24px;
+  }
+
+  .caseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: stretch;
+    flex-direction: column;
+
+    a,
+    button {
+      justify-content: center;
+    }
+  }
+}
+
+@media print {
+  .document {
+    max-width: none;
+    gap: 22px;
+    padding: 0;
+  }
+
+  .actions {
+    display: none;
+  }
+
+  .header,
+  .caseCard,
+  .formula {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .caseGrid {
+    gap: 10px;
+  }
+
+  .caseCard {
+    padding: 14px;
+  }
+}

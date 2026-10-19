@@ -1,0 +1,52 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  border-top: 1px solid $border-color;
+  background: rgba(255, 253, 249, 0.72);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 26px 20px;
+  gap: 20px;
+
+  p {
+    display: grid;
+    gap: 2px;
+    color: $text-muted;
+    font-size: 14px;
+
+    strong {
+      color: $secondary-color;
+      font-size: 15px;
+    }
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    a {
+      color: $text-muted;
+      font-size: 14px;
+      font-weight: 650;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
